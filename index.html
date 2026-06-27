@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>La mulți ani, Petruța! 🌸</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Soft floating background blobs -->
+  <div class="bg-decor" aria-hidden="true">
+    <span class="petal petal--1">🌸</span>
+    <span class="petal petal--2">🌸</span>
+    <span class="petal petal--3">✨</span>
+    <span class="petal petal--4">🌸</span>
+    <span class="petal petal--5">✨</span>
+  </div>
+
+  <main class="stage">
+
+    <!-- SCREEN 1: Gift -->
+    <section id="gift-screen" class="screen gift-screen">
+      <p class="gift-screen__eyebrow">pentru Petruța</p>
+      <button id="gift-box" class="gift-box" type="button" aria-label="Deschide cadoul">
+        <span class="gift-box__emoji">🎁</span>
+        <span class="gift-box__glow" aria-hidden="true"></span>
+      </button>
+      <p class="gift-screen__hint">
+        Ai primit un cadou! <br />
+        Atinge-l pentru a-l deschide <span aria-hidden="true">✨</span>
+      </p>
+    </section>
+
+    <!-- SCREEN 2: Postcard reveal -->
+    <section id="card-screen" class="screen card-screen" hidden>
+      <article class="postcard" id="postcard">
+        <p class="postcard__kicker">La mulți ani! <span aria-hidden="true">🌸</span></p>
+
+        <p class="postcard__text">
+          La mulți ani, domnișoară Manager Petruța<span aria-hidden="true">✨</span>!
+          Să ai o zi de nume la fel de superbă ca tine.
+          Mă bucur enorm că ai scăpat de tot greul și sper din tot sufletul
+          ca, de acum încolo, totul să fie roz și frumos, iar greutățile
+          să te ocolească<span aria-hidden="true">🌸</span>.
+        </p>
+
+        <p class="postcard__signature">
+          Cu drag,<br />
+          Președintele României, Georgescu <span aria-hidden="true">🇷🇴</span>
+        </p>
+
+        <div class="postcard__seal" aria-hidden="true">🌸</div>
+      </article>
+
+      <button id="replay-btn" class="replay-btn" type="button">
+        ↻ Vezi cadoul din nou
+      </button>
+    </section>
+
+  </main>
+
+  <!-- Confetti canvas, sits behind/above content during the burst -->
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- Music: playback is triggered only inside the click handler in script.js -->
+  <audio id="bg-music" src="music.mp3" preload="auto" loop></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
