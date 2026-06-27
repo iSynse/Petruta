@@ -195,7 +195,10 @@ body {
 /* Lid flips open and the whole box sinks + fades, like
    wrapping paper falling away once the card is out */
 .gift-box.is-open {
-  transform: translateY(30px) scale(0.7);
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translate(-50%, 30px) scale(0.7);
   opacity: 0;
   pointer-events: none;
 }
