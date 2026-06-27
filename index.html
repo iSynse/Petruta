@@ -27,44 +27,49 @@
 
   <main class="stage">
 
-    <!-- SCREEN 1: Gift -->
-    <section id="gift-screen" class="screen gift-screen">
-      <p class="gift-screen__eyebrow">pentru Petruța</p>
-      <button id="gift-box" class="gift-box" type="button" aria-label="Deschide cadoul">
-        <span class="gift-box__emoji">🎁</span>
-        <span class="gift-box__glow" aria-hidden="true"></span>
-      </button>
-      <p class="gift-screen__hint">
+    <div class="gift-scene" id="gift-scene">
+
+      <p class="gift-scene__eyebrow" id="eyebrow">pentru Petruța</p>
+
+      <!-- The box stays mounted; postcard rises out of it on open -->
+      <div class="box-wrap" id="box-wrap">
+
+        <!-- Box lid + base, drawn in two halves so the lid can pop open -->
+        <button id="gift-box" class="gift-box" type="button" aria-label="Deschide cadoul">
+          <span class="gift-box__glow" aria-hidden="true"></span>
+          <span class="gift-box__lid" aria-hidden="true">🎁</span>
+        </button>
+
+        <!-- Postcard: starts tucked inside the box, then rises and grows -->
+        <article class="postcard" id="postcard">
+          <p class="postcard__kicker">La mulți ani! <span aria-hidden="true">🌸</span></p>
+
+          <p class="postcard__text">
+            La mulți ani, domnișoară Manager Petruța<span aria-hidden="true">✨</span>!
+            Să ai o zi de nume la fel de superbă ca tine.
+            Mă bucur enorm că ai scăpat de tot greul și sper din tot sufletul
+            ca, de acum încolo, totul să fie roz și frumos, iar greutățile
+            să te ocolească<span aria-hidden="true">🌸</span>.
+          </p>
+
+          <p class="postcard__signature">
+            Cu drag,<br />
+            Președintele României, Georgescu <span aria-hidden="true">🇷🇴</span>
+          </p>
+
+          <div class="postcard__seal" aria-hidden="true">🌸</div>
+        </article>
+      </div>
+
+      <p class="gift-scene__hint" id="hint">
         Ai primit un cadou! <br />
         Atinge-l pentru a-l deschide <span aria-hidden="true">✨</span>
       </p>
-    </section>
 
-    <!-- SCREEN 2: Postcard reveal -->
-    <section id="card-screen" class="screen card-screen" hidden>
-      <article class="postcard" id="postcard">
-        <p class="postcard__kicker">La mulți ani! <span aria-hidden="true">🌸</span></p>
-
-        <p class="postcard__text">
-          La mulți ani, domnișoară Manager Petruța<span aria-hidden="true">✨</span>!
-          Să ai o zi de nume la fel de superbă ca tine.
-          Mă bucur enorm că ai scăpat de tot greul și sper din tot sufletul
-          ca, de acum încolo, totul să fie roz și frumos, iar greutățile
-          să te ocolească<span aria-hidden="true">🌸</span>.
-        </p>
-
-        <p class="postcard__signature">
-          Cu drag,<br />
-          Președintele României, Georgescu <span aria-hidden="true">🇷🇴</span>
-        </p>
-
-        <div class="postcard__seal" aria-hidden="true">🌸</div>
-      </article>
-
-      <button id="replay-btn" class="replay-btn" type="button">
+      <button id="replay-btn" class="replay-btn" type="button" hidden>
         ↻ Vezi cadoul din nou
       </button>
-    </section>
+    </div>
 
   </main>
 

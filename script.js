@@ -6,9 +6,9 @@
 (() => {
   "use strict";
 
+  const giftScene = document.getElementById("gift-scene");
   const giftBox = document.getElementById("gift-box");
-  const giftScreen = document.getElementById("gift-screen");
-  const cardScreen = document.getElementById("card-screen");
+  const postcard = document.getElementById("postcard");
   const music = document.getElementById("bg-music");
   const replayBtn = document.getElementById("replay-btn");
   const canvas = document.getElementById("confetti-canvas");
@@ -16,7 +16,8 @@
   let hasOpened = false;
 
   /* -----------------------------------------------------
-     Gift box click → shake, confetti, music, reveal card
+     Gift box click → shake, confetti, music, card rises
+     out of the box and grows to full size.
      ----------------------------------------------------- */
 
   function openGift() {
@@ -39,27 +40,26 @@
     // 3) Fire confetti burst
     launchConfetti();
 
-    // 4) After the shake, make the box vanish
+    // 4) After the shake, pop the lid open and let the card rise
     window.setTimeout(() => {
       giftBox.classList.remove("is-opening");
-      giftBox.classList.add("is-vanishing");
-    }, 500);
+      giftBox.classList.add("is-open");
+      giftScene.classList.add("is-open");
+      postcard.classList.add("is-rising");
+      if (replayBtn) replayBtn.hidden = false;
+    }, 480);
 
-    // 5) Fade out the whole gift screen, then show the postcard
+    // 5) Once the rise animation finishes, drop the card into normal
+    //    flow so the page scrolls naturally if the card is tall.
     window.setTimeout(() => {
-      giftScreen.classList.add("is-leaving");
-    }, 650);
-
-    window.setTimeout(() => {
-      giftScreen.hidden = true;
-      cardScreen.hidden = false;
-    }, 1150);
+      postcard.classList.add("is-revealed");
+    }, 480 + 700);
   }
 
   giftBox.addEventListener("click", openGift);
 
   /* -----------------------------------------------------
-     Replay button: reset to screen 1 so the moment
+     Replay button: reset to the closed box so the moment
      can be experienced again without reloading.
      ----------------------------------------------------- */
 
@@ -67,10 +67,10 @@
     replayBtn.addEventListener("click", () => {
       hasOpened = false;
 
-      cardScreen.hidden = true;
-      giftScreen.hidden = false;
-      giftScreen.classList.remove("is-leaving");
-      giftBox.classList.remove("is-vanishing", "is-opening");
+      giftScene.classList.remove("is-open");
+      giftBox.classList.remove("is-open", "is-opening");
+      postcard.classList.remove("is-revealed", "is-rising");
+      replayBtn.hidden = true;
 
       if (music) {
         music.pause();
